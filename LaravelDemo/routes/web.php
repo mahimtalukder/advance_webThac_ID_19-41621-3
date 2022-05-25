@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\mycontroller;
+use App\Http\Controllers\PagesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,4 +18,9 @@ Route::get('/', function () {
     return view('Hello');
 });
 
-Route::get('user',[mycontroller::class, 'viewCon']);
+Route::get('/hello', function () {
+    return view('hello');
+});
+
+
+Route::get('/hello',[PagesController::class, 'index']);

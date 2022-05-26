@@ -14,13 +14,10 @@ use App\Http\Controllers\PagesController;
 |
 */
 
-Route::get('/', function () {
-    return view('Hello');
-});
+/*Route::get('/', function () {
+    return view('indexPage');
+});*/
 
-Route::get('/hello', function () {
-    return view('hello');
-});
+Route::get('/',[PagesController::class, 'index']);
 
-
-Route::get('/hello',[PagesController::class, 'index']);
+Route::get('/aboutMe',[PagesController::class, 'aboutMe']);

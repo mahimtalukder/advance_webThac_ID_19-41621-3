@@ -21,3 +21,7 @@ use App\Http\Controllers\PagesController;
 Route::get('/',[PagesController::class, 'index']);
 
 Route::get('/aboutMe',[PagesController::class, 'aboutMe']);
+
+Route::get('/portfolio',[PagesController::class, 'portfolio']);
+
+Route::get('/contact',[PagesController::class, 'contact']);

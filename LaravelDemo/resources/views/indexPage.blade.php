@@ -3,8 +3,10 @@ use App\Http\Controllers\PagesController;
 ?>
 
 @extends('layouts.app')
+@section('title', 'Home')
 @section('content')
 <script>document.getElementById("homePage").className = "current";</script>
+<script>document.getElementById("homePageM").className = "current";</script>
 <div class="shane_tm_hero" id="home" data-style="three">
     <div class="background">
             <div class="image" data-img-url="{{ URL::asset('img/slider/my_pic.jpg')}}"></div>

@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', 'About')
 @section('content')
 <script>document.getElementById("aboutPage").className = "current";</script>
 <div class="shane_tm_section" id="about">
@@ -28,8 +29,7 @@
                     </div>
                     <div class="shane_tm_button wow fadeInUp"
                         data-wow-duration="1.5s">
-                        <a href="{{ URL::asset('file/MahimCV.pdf')}}" download>Download
-                            CV</a>
+                        <a target="_blank" href="{{ URL::asset('file/MahimCV.pdf')}}" download >Download CV</a>
                     </div>
                 </div>
             </div>

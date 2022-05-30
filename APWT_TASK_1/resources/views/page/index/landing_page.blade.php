@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('title', 'Home')
 @section('content')
+<script>document.getElementById("home").className = "nav-link active";</script>
 	<section class="banner-area bg-1">
 		<div class="container">
 			<div class="row align-items-center">

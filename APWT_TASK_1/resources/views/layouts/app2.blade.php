@@ -27,9 +27,29 @@
 		<title>MT | @yield('title')</title>
     </head>
 
-    <body>		
+    <body>	
 		<!-- Start Header Area -->
 		@include('inc.topnav')
+
+
+        <!-- Start Page Title Area -->
+		<div class="page-title-area page-title-style-two">
+			<div class="container">
+				<div class="page-title-content">
+					<h2>@yield('PageTitle')</h2>
+					<ul>
+						<li>
+							<a href="{{route('home')}}">
+								<i class="bx bx-home"></i>
+								Home 
+							</a>
+						</li>
+                        @yield('CurrentPage')
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- End Page Title Area -->
 
 		<!-- Start Contain -->
         @yield('content')

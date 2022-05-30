@@ -8,6 +8,11 @@ class PagesController extends Controller
 {
     public function home()
     {
-        return view('home');
+        return view('page.index.landing_page');
+    }
+
+    public function service()
+    {
+        return view('product.service');
     }
 }

@@ -33,7 +33,7 @@
 
 
         <!-- Start Page Title Area -->
-		<div class="page-title-area page-title-style-two">
+		<div class="page-title-area">
 			<div class="container">
 				<div class="page-title-content">
 					<h2>@yield('PageTitle')</h2>

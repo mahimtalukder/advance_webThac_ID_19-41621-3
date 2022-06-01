@@ -32,19 +32,19 @@
                             </li>
 
                             <li class="nav-item">
-                                <a href="#" id="aboutUs" class="nav-link">
+                                <a href="{{route('aboutUs')}}" id="aboutUs" class="nav-link">
                                     About us
                                 </a>
                             </li>
 
                             <li class="nav-item">
-                                <a href="#" id="teams" class="nav-link">
+                                <a href="{{route('teams')}}" id="teams" class="nav-link">
                                     Teams
                                 </a>
                             </li>
 
                             <li class="nav-item">
-                                <a href="#" id="contact" class="nav-link">Contact</a>
+                                <a href="{{route('contact')}}" id="contact" class="nav-link">Contact</a>
                             </li>
                         </ul>
                     </div>

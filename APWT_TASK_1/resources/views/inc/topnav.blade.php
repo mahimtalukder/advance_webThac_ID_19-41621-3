@@ -4,8 +4,8 @@
     <div class="navbar-area navbar-area-two">
         <div class="mobile-nav">
             <div class="container">
-                <a href="index.html" class="logo">
-                    <img src="assets/img/black-logo.png" alt="Logo">
+                <a href="{{route('home')}}" class="logo">
+                    <img src="assets/img/mt.png" alt="Logo">
                 </a>
             </div>
         </div>
@@ -13,8 +13,8 @@
         <div class="main-nav">
             <div class="container">
                 <nav class="navbar navbar-expand-md">
-                    <a class="navbar-brand" href="index.html">
-                        <img src="assets/img/black-logo.png" alt="Logo">
+                    <a class="navbar-brand" href="{{route('home')}}">
+                        <img src="assets/img/mt.png" alt="Logo">
                     </a>
                     
                     <div class="collapse navbar-collapse mean-menu">

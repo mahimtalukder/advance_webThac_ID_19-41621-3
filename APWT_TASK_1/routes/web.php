@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\InformationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +20,8 @@ use App\Http\Controllers\PagesController;
 });*/
 
 Route::get('/',[PagesController::class, 'home'])->name("home");
-Route::get('/service',[PagesController::class, 'service'])->name("service");
 Route::get('/aboutUs',[PagesController::class, 'aboutUs'])->name("aboutUs");
-Route::get('/teams',[PagesController::class, 'teams'])->name("teams");
 Route::get('/contact',[PagesController::class, 'contact'])->name("contact");
+
+Route::get('/teams',[InformationController::class, 'teams'])->name("teams");
+Route::get('/service',[InformationController::class, 'service'])->name("service");

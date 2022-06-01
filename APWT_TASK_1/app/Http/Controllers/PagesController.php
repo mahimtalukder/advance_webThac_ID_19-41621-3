@@ -11,19 +11,9 @@ class PagesController extends Controller
         return view('page.index.landing_page');
     }
 
-    public function service()
-    {
-        return view('product.service');
-    }
-
     public function aboutUs()
     {
         return view('aboutUs');
-    }
-
-    public function teams()
-    {
-        return view('teams');
     }
 
     public function contact()

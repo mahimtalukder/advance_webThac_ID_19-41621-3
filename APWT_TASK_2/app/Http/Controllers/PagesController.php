@@ -15,9 +15,4 @@ class PagesController extends Controller
     {
         return view('aboutUs');
     }
-
-    public function contact()
-    {
-        return view('contact');
-    }
 }

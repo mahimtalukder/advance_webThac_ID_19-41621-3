@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\InformationController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\ContactController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,7 +23,7 @@ use App\Http\Controllers\EmployeeController;
 
 Route::get('/',[PagesController::class, 'home'])->name("home");
 Route::get('/aboutUs',[PagesController::class, 'aboutUs'])->name("aboutUs");
-Route::get('/contact',[PagesController::class, 'contact'])->name("contact");
+
 
 Route::get('/teams',[InformationController::class, 'teams'])->name("teams");
 Route::get('/service',[InformationController::class, 'service'])->name("service");
@@ -33,3 +34,6 @@ Route::post('/employeeSignIn',[EmployeeController::class, 'employeeSignInSubmitt
 Route::get('/employeeCreate',[EmployeeController::class, 'employeeCreate'])->name("employeeCreate");
 Route::post('/employeeCreate',[EmployeeController::class, 'employeeCreateSubmitted'])->name('employeeCreate');
 Route::get('/employeeCreateSuccess',[EmployeeController::class, 'employeeCreateSuccess'])->name("employeeCreateSuccess");
+
+Route::get('/contact',[ContactController::class, 'contact'])->name("contact");
+Route::post('/contact',[ContactController::class, 'contactMessageSubmitted'])->name("contactMessageSubmitted");

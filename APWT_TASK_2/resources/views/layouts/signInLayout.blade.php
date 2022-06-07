@@ -28,7 +28,7 @@
           <div class="col-lg-4 mx-auto">
             <div class="auth-form-light text-left py-5 px-4 px-sm-5">
               <div class="brand-logo">
-                <img src="https://www.bootstrapdash.com/demo/justdo/template/images/logo.svg" alt="logo">
+                <a href="{{route('home')}}"> <img src="assets/img/mt.png" alt="logo"> </a>
               </div>
 
               @yield('contant')

@@ -15,18 +15,22 @@
 							<div class="contact-form">
 								<div class="contact-title">
 									<h2>Write Us</h2>
+									@if (!empty($message))
+										<h3 class="text-primary">{{$message}}</h3>
+									@endif
 								</div>
 
-								<form action="https://formspree.io/f/xeqnnlbw" method="POST" target="_blank">
+								<form action="{{route('contactMessageSubmitted')}}" method="post">
+									{{csrf_field()}}
 									<div class="row">
 										<div class="col-lg-6 col-sm-6">
 											<div class="form-group">
 												<label>Name</label>
-												<input type="text" name="name" id="name" class="form-control" required data-error="Please enter your name">
+												<input type="text" name="name" id="name" class="form-control" >
 												<div class="help-block with-errors">
-													<ul class = "list-unstyled">
-														<li></li>
-													</ul>
+													@error('name')
+														<span class="text-danger">{{$message}}</span>
+													@enderror
 												</div>
 											</div>
 										</div>
@@ -34,24 +38,36 @@
 										<div class="col-lg-6 col-sm-6">
 											<div class="form-group">
 												<label>Email Address</label>
-												<input type="email" name="email" id="email" class="form-control" required data-error="Please enter your email">
-												<div class="help-block with-errors"></div>
+												<input name="email" id="email" class="form-control" >
+												<div class="help-block with-errors">
+													@error('email')
+														<span class="text-danger">{{$message}}</span>
+													@enderror
+												</div>
 											</div>
 										</div>
 			
 										<div class="col-12">
 											<div class="form-group">
 												<label>Subject</label>
-												<input type="text" name="msg_subject" id="msg_subject" class="form-control" required data-error="Please enter your subject">
-												<div class="help-block with-errors"></div>
+												<input type="text" name="subject" id="msg_subject" class="form-control">
+												<div class="help-block with-errors">
+													@error('subject')
+														<span class="text-danger">{{$message}}</span>
+													@enderror
+												</div>
 											</div>
 										</div>
 			
 										<div class="col-12">
 											<div class="form-group">
 												<label>Message</label>
-												<textarea name="message" class="form-control" id="message" cols="30" rows="10" required data-error="Write your message"></textarea>
-												<div class="help-block with-errors"></div>
+												<textarea name="message" class="form-control" id="message" cols="30" rows="10"></textarea>
+												<div class="help-block with-errors">
+													@error('message')
+														<span class="text-danger">{{$message}}</span>
+													@enderror
+												</div>
 											</div>
 										</div>
 			
@@ -59,8 +75,6 @@
 											<button type="submit" class="default-btn btn-two">
 												<span>Send Message</span>
 											</button>
-											<div id="msgSubmit" class="h3 text-center hidden"></div>
-											<div class="clearfix"></div>
 										</div>
 									</div>
 								</form>

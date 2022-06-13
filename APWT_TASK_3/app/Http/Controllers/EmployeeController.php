@@ -10,6 +10,10 @@ use Illuminate\Http\Request;
 class EmployeeController extends Controller
 {
     
+    public function employeeDash()
+    {
+        return view('employee.dashboard');
+    }
     public function employeeSignIn(){
         return view('employee.signIn');
     }
@@ -27,13 +31,19 @@ class EmployeeController extends Controller
         $employee = Employee::whereRaw("BINARY username = '$request->username'")->whereRaw("BINARY password = '$request->password'")->first();
 
         if(!empty($employee)){
-            return view('employee.signIn')->with('message', "Sign In success");
+            $request->session()->put('employee', $employee);
+            return redirect()->route('employeeDash');
         }
         else{
             return view('employee.signIn')->with('error_message', "Information not found");
         }
 
-        
+    }
+
+    public function logOut()
+    {
+        session()->forget('employee');
+        return redirect()->route('employeeSignIn');
     }
 
     public function employeeCreateSuccess(){
@@ -64,6 +74,7 @@ class EmployeeController extends Controller
         $employee->name = $request->name;
         $employee->email = $request->email;
         $employee->password = $request->password;
+        $employee->picture = 'images/deafult.png';
         $employee->save();
 
         return redirect()->route('employeeCreateSuccess');

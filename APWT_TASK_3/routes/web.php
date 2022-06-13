@@ -29,7 +29,8 @@ Route::get('/teams',[InformationController::class, 'teams'])->name("teams");
 Route::get('/service',[InformationController::class, 'service'])->name("service");
 
 Route::get('/employeeSignIn',[EmployeeController::class, 'employeeSignIn'])->name("employeeSignIn");
-Route::post('/employeeSignIn',[EmployeeController::class, 'employeeSignInSubmitted'])->name("employeeSignInSubmitted");
+Route::post('/employeeDashboard',[EmployeeController::class, 'employeeSignInSubmitted'])->name("employeeSignInSubmitted");
+Route::get('/logout',[EmployeeController::class,'logout'])->name('employeeLogout');
 
 Route::get('/employeeCreate',[EmployeeController::class, 'employeeCreate'])->name("employeeCreate");
 Route::post('/employeeCreate',[EmployeeController::class, 'employeeCreateSubmitted'])->name('employeeCreate');
@@ -37,3 +38,5 @@ Route::get('/employeeCreateSuccess',[EmployeeController::class, 'employeeCreateS
 
 Route::get('/contact',[ContactController::class, 'contact'])->name("contact");
 Route::post('/contact',[ContactController::class, 'contactMessageSubmitted'])->name("contactMessageSubmitted");
+
+Route::get('/employee/dash', [EmployeeController::class,'employeeDash'])->name('employeeDash')->middleware('ValidedEmployee'); 

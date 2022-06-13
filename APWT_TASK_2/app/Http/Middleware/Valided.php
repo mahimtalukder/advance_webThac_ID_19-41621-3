@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class ValidedEmployee
+class Valided
 {
     /**
      * Handle an incoming request.
@@ -16,9 +16,6 @@ class ValidedEmployee
      */
     public function handle(Request $request, Closure $next)
     {
-        if($request->session()->get('employee')){
-            return $next($request);
-        }
-        return redirect()->route('employeeSignIn');
+        return $next($request);
     }
 }

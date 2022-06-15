@@ -5,82 +5,46 @@ namespace App\Http\Controllers;
 use App\Models\Admin;
 use App\Http\Requests\StoreAdminRequest;
 use App\Http\Requests\UpdateAdminRequest;
+use Illuminate\Http\Request;
+use Session;
 
 class AdminController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
+  public function dashboard(){
+      return view('admin.dashboard');
+  }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+  public function viewProfile(){
+    return view('admin.viewProfile');
+  }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreAdminRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StoreAdminRequest $request)
-    {
-        //
-    }
+  public function editProfile(){
+    return view('admin.editProfile');
+  }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Admin  $admin
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Admin $admin)
-    {
-        //
-    }
+  public function editProfileSubmitted(Request $request){
+      $rules=[
+        "name"=>"required|max:20",
+        'email'=>'required|email',
+    ];
+    $messages = [
+        'required'=>"Please fill this fild",
+        'name.max' => "Name can not exceed 20 characters",
+        'email.email' => "Wrong formet",
+    ];
+    $this->validate($request, $rules, $messages );
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Admin  $admin
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Admin $admin)
-    {
-        //
-    }
+    $admin_info = session()->get('admin');
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateAdminRequest  $request
-     * @param  \App\Models\Admin  $admin
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateAdminRequest $request, Admin $admin)
-    {
-        //
-    }
+    $admin = Admin::where('username', $admin_info['username']);
+    $admin->update(['name' => $request->name, 'email' => $request->email]);
+    
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Admin  $admin
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Admin $admin)
-    {
-        //
-    }
+    $admin_info['name'] = $request->name;
+    $admin_info['email'] = $request->email;
+
+    session()->put('admin',$admin_info);
+
+    return view('admin.editProfile')->with('success_msg', "Information Updated");
+  }
 }

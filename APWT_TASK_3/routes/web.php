@@ -6,6 +6,7 @@ use App\Http\Controllers\InformationController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\MemberController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,8 +31,22 @@ Route::post('/contact',[ContactController::class, 'contactMessageSubmitted'])->n
 
 //login
 Route::get('/signIn',[MemberController::class, 'signIn'])->name("signIn");
-Route::post('/employeeDashboard',[EmployeeController::class, 'employeeSignInSubmitted'])->name("employeeSignInSubmitted");
-Route::get('/logout',[EmployeeController::class,'logout'])->name('employeeLogout');
+Route::post('/signInSubmitted',[MemberController::class, 'signInSubmitted'])->name("signInSubmitted");
+Route::get('/logout',[MemberController::class,'logout'])->name('logout');
+
+//admin
+Route::get('/admin/dash', [AdminController::class, 'dashboard'])
+->name('adminDash')->middleware('validedAdmin'); 
+
+Route::get('/admin/viewProfile', [AdminController::class, 'viewProfile'])
+->name('adminViewProfile')->middleware('validedAdmin'); 
+
+Route::get('/admin/editProfile', [AdminController::class, 'editProfile'])
+->name('adminEditProfile')->middleware('validedAdmin'); 
+
+Route::post('/admin/editProfile',[AdminController::class, 'editProfileSubmitted'])
+->name('adminEditProfileSubmitted')->middleware('validedAdmin'); 
+
 
 //registration 
 Route::get('/employeeCreate',[EmployeeController::class, 'employeeCreate'])->name("employeeCreate");

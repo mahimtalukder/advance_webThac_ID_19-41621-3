@@ -9,7 +9,7 @@
     @endif
     <h4>Hello! let's get started</h4>
     <h6 class="font-weight-light">Sign in to continue.</h6>
-    <form class="pt-3" action="{{route('employeeSignInSubmitted')}}" method="post">
+    <form class="pt-3" action="{{route('signInSubmitted')}}" method="post">
         {{csrf_field()}}
         <div class="form-group">
             <input class="form-control form-control-lg" name="username" placeholder="Username">

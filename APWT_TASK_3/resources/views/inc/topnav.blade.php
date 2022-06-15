@@ -50,7 +50,7 @@
                         <div class="others-option">
 
                             <div class="get-quote">
-                                <a href="{{route('employeeSignIn')}}" class="default-btn">
+                                <a href="{{route('signIn')}}" class="default-btn">
                                     <span>Sign in</span>
                                 </a>
                             </div>

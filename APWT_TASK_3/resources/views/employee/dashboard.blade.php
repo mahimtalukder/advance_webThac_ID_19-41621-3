@@ -1,5 +1,6 @@
 <?php $employee = session()->get('employee')?>
 @extends('layouts.employeeLayout')
+@section('title', 'Dashboard')
 @section('picture', $employee['picture'])
 @section('name', $employee['name'])
 @section('email', $employee['email'])

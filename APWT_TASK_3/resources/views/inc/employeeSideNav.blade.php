@@ -1,8 +1,8 @@
     <!-- partial:partials/_sidebar.html -->
     <nav class="sidebar">
         <div class="sidebar-header">
-          <a href="#" class="sidebar-brand">
-            Noble<span>UI</span>
+          <a href="{{route('employeeDash')}}" class="sidebar-brand">
+            MT<span>LTD</span>
           </a>
           <div class="sidebar-toggler not-active">
             <span></span>

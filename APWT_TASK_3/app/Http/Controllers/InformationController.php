@@ -112,5 +112,4 @@ class InformationController extends Controller
 
         return view('product.service')->with('all_service', $all_service);
     }
-
 }

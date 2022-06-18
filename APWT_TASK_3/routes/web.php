@@ -47,6 +47,20 @@ Route::get('/admin/editProfile', [AdminController::class, 'editProfile'])
 Route::post('/admin/editProfile',[AdminController::class, 'editProfileSubmitted'])
 ->name('adminEditProfileSubmitted')->middleware('validedAdmin'); 
 
+Route::get('/admin/employeeAdd',[AdminController::class, 'employeeAdd'])
+->name('adminEmployeeAdd')->middleware('validedAdmin'); 
+
+Route::post('/admin/employeeAdd',[AdminController::class, 'employeeAddSubmitted'])
+->name('adminEmployeeAddSubmitted')->middleware('validedAdmin');
+
+Route::get('/admin/employeeList',[AdminController::class, 'employeeList'])
+->name('employeeList')->middleware('validedAdmin');
+
+Route::get('/admin/editEmployee/{username}',[AdminController::class, 'editEmployee'])
+->name('adminEditEmployee')->middleware('validedAdmin');
+
+Route::post('/admin/editEmployeeSubmitted',[AdminController::class, 'editEmployeeSubmitted'])
+->name('adminEditEmployeeSubmitted')->middleware('validedAdmin');
 
 //registration 
 Route::get('/employeeCreate',[EmployeeController::class, 'employeeCreate'])->name("employeeCreate");

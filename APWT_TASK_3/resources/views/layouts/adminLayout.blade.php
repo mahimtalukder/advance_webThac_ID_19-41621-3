@@ -22,29 +22,31 @@ License: For each use you must have a valid license purchased only from above li
 	<title>MT | @yield('title')</title>
 
   <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com/">
-  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&amp;display=swap" rel="stylesheet">
+  <link rel="preconnect" href="{{asset('https://fonts.googleapis.com/')}}">
+  <link rel="preconnect" href="{{asset('https://fonts.gstatic.com/')}}" crossorigin>
+  <link href="{{asset('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&amp;display=swap')}}" rel="stylesheet">
   <!-- End fonts -->
 
 	<!-- core:css -->
-	<link rel="stylesheet" href="../assets_2/vendors/core/core.css">
+	<link rel="stylesheet" href="{{asset('../assets_2/vendors/core/core.css')}}">
 	<!-- endinject -->
 
 	<!-- Plugin css for this page -->
-  <link rel="stylesheet" href="../assets_2/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css">
+  <link rel="stylesheet" href="{{asset('../assets_2/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css')}}">
 	<!-- End plugin css for this page -->
 
 	<!-- inject:css -->
-	<link rel="stylesheet" href="../assets_2/fonts/feather-font/css/iconfont.css">
-	<link rel="stylesheet" href="../assets_2/vendors/flag-icon-css/css/flag-icon.min.css">
+	<link rel="stylesheet" href="{{asset('../assets_2/fonts/feather-font/css/iconfont.css')}}">
+	<link rel="stylesheet" href="{{asset('../assets_2/vendors/flag-icon-css/css/flag-icon.min.css')}}">
 	<!-- endinject -->
 
   <!-- Layout styles -->  
-	<link rel="stylesheet" href="../assets_2/css/demo1/style.min.css">
+	<link rel="stylesheet" href="{{asset('../assets_2/css/demo1/style.min.css')}}">
   <!-- End layout styles -->
 
-  <link rel="shortcut icon" href="../assets_2/images/favicon.png" />
+  <link rel="shortcut icon" href="{{asset('../assets_2/images/favicon.png')}}" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
 </head>
 <body>
 	<div class="main-wrapper">
@@ -70,28 +72,32 @@ License: For each use you must have a valid license purchased only from above li
 	</div>
 
 	<!-- core:js -->
-	<script src="../assets_2/vendors/core/core.js"></script>
+	<script src="{{asset('../assets_2/vendors/core/core.js')}}"></script>
 	<!-- endinject -->
 
 	<!-- Plugin js for this page -->
-  <script src="../assets_2/vendors/chartjs/Chart.min.js"></script>
-  <script src="../assets_2/vendors/jquery.flot/jquery.flot.js"></script>
-  <script src="../assets_2/vendors/jquery.flot/jquery.flot.resize.js"></script>
-  <script src="../assets_2/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
-  <script src="../assets_2/vendors/apexcharts/apexcharts.min.js"></script>
+  <script src="{{asset('../assets_2/vendors/chartjs/Chart.min.js')}}"></script>
+  <script src="{{asset('../assets_2/vendors/jquery.flot/jquery.flot.js')}}"></script>
+  <script src="{{asset('../assets_2/vendors/jquery.flot/jquery.flot.resize.js')}}"></script>
+  <script src="{{asset('../assets_2/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js')}}"></script>
+  <script src="{{asset('../assets_2/vendors/apexcharts/apexcharts.min.js')}}"></script>
 	<!-- End plugin js for this page -->
 
 	<!-- inject:js -->
-	<script src="../assets_2/vendors/feather-icons/feather.min.js"></script>
-	<script src="../assets_2/js/template.js"></script>
+	<script src="{{asset('../assets_2/vendors/feather-icons/feather.min.js')}}"></script>
+	<script src="{{asset('../assets_2/js/template.js')}}"></script>
 	<!-- endinject -->
 
 	<!-- Custom js for this page -->
-  <script src="../assets_2/js/dashboard-light.js"></script>
-  <script src="../assets_2/js/datepicker.js"></script>
+  <script src="{{asset('../assets_2/js/dashboard-light.js')}}"></script>
+  <script src="{{asset('../assets_2/js/datepicker.js')}}"></script>
+	<!-- End custom js for this page -->
+
+	<!-- Custom js for this page -->
+	<script src="{{asset('assets_2/js/sweet-alert.js')}}"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
 	<!-- End custom js for this page -->
 
 </body>
 
-<!-- Mirrored from www.nobleui.com/html/template/demo1/dashboard.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 08 Jun 2022 13:58:50 GMT -->
 </html>    

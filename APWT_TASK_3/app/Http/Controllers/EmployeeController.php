@@ -5,82 +5,53 @@ namespace App\Http\Controllers;
 use App\Models\Employee;
 use App\Http\Requests\StoreEmployeeRequest;
 use App\Http\Requests\UpdateEmployeeRequest;
+use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function __construct()
     {
-        //
+        $this->middleware('validEmployee');
+    }
+    public function dashboard()
+    {
+      return view('employee.dashboard');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function viewProfile()
     {
-        //
+      return view('employee.viewProfile');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreEmployeeRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StoreEmployeeRequest $request)
+    public function editProfile()
     {
-        //
+      return view('employee.editProfile');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Employee  $employee
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Employee $employee)
+    public function editProfileSubmitted(Request $request)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Employee  $employee
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Employee $employee)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateEmployeeRequest  $request
-     * @param  \App\Models\Employee  $employee
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateEmployeeRequest $request, Employee $employee)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Employee  $employee
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Employee $employee)
-    {
-        //
+      $rules = [
+        "name" => "required|max:20",
+        'email' => 'required|email',
+      ];
+      $messages = [
+        'required' => "Please fill this fild",
+        'name.max' => "Name can not exceed 20 characters",
+        'email.email' => "Wrong formet",
+      ];
+      $this->validate($request, $rules, $messages);
+  
+      $employee_info = session()->get('employee');
+  
+      $employee = Employee::where('username', $employee_info['username']);
+      $employee->update(['name' => $request->name, 'email' => $request->email]);
+  
+  
+      $employee_info['name'] = $request->name;
+      $employee_info['email'] = $request->email;
+  
+      session()->put('employee', $employee_info);
+  
+      return view('employee.editProfile')->with('success_msg', "Information Updated");
     }
 }

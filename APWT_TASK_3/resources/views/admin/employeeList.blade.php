@@ -15,6 +15,9 @@ $admin = session()->get('admin');
                     @if (!empty($success_msg))
                         <h6 class="card-title text-primary">{{$success_msg}}</h6>
                     @endif
+                    @if (!empty($error_message))
+                        <h6 class="card-title text-danger">{{$error_message}}</h6>
+                    @endif
                     <div class="table-responsive">
                         <table class="table table-striped">
                             <thead>
@@ -40,7 +43,7 @@ $admin = session()->get('admin');
                                             <a href="/admin/editEmployee/{{$employee['username']}}" class="btn btn-primary btn-icon-text">Edit</a>
                                         </td>
                                         <td>
-                                            <button onclick="showSwal('passing-parameter-execute-cancel')" class="btn btn-primary">Delete</button>
+                                            <a href="/admin/employeeDelete/{{$employee['username']}}" class="btn btn-primary btn-icon-text">Delete</a>
                                         </td>
                                     </tr>
                                 @endforeach

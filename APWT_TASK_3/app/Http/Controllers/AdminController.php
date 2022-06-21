@@ -100,6 +100,21 @@ class AdminController extends Controller
   public function employeeList(){
 
     $employees = Employee::paginate(2);
+
+    if(Session::has('success_msg'))
+    {
+      $success_msg = session()->get('success_msg');
+      session()->forget('success_msg');
+      return view('admin.employeeList')->with('employees', $employees)->with('success_msg', $success_msg);
+    }
+
+    else if(Session::has('error_message'))
+    {
+      $error_message = session()->get('error_message');
+      session()->forget('error_message');
+      return view('admin.employeeList')->with('employees', $employees)->with('error_message', $error_message);
+    }
+
     return view('admin.employeeList')->with('employees', $employees);
   }
 
@@ -127,5 +142,19 @@ class AdminController extends Controller
 
 
     return redirect()->route('employeeList');
+  }
+
+
+  public function employeeDelete(Request $request)
+  {
+    $is_deleted_employee = Employee::where('username',$request->username)->delete();
+    $is_deleted_member = Member::where('username',$request->username)->delete();
+
+    if($is_deleted_employee && $is_deleted_member){
+      return redirect()->route('employeeList')->with([ 'success_msg' => "Employee deleted" ]);
+
+    }
+    
+    return redirect()->route('employeeList')->with([ 'error_message' => "Employee not deleted" ]);
   }
 }

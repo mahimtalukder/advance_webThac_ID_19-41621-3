@@ -157,4 +157,31 @@ class AdminController extends Controller
     
     return redirect()->route('employeeList')->with([ 'error_message' => "Employee not deleted" ]);
   }
+
+
+  public function APIEmployeeList(){
+
+    $employees = Employee::all();
+
+    return $employees;
+  }
+
+  public function APIemployeeAdd(Request $request)
+  {
+
+    $member = new Member();
+    $member->username = $request->username;
+    $member->password = Hash::make($request->password);
+    $member->type = "employee";
+    $member->save();
+
+    $employee = new  Employee();
+    $employee->username = $request->username;
+    $employee->name = $request->name;
+    $employee->email = $request->email;
+    $employee->picture = '../assets/images/faces/default.png';
+    $employee->save();
+
+    return $request;
+  }
 }

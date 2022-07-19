@@ -187,6 +187,7 @@
               <div class="card">
                   <div class="card-body">
                       <h4 class="card-title">Employee Add</h4>
+                      <h6 id="success_msg" class="card-title text-primary"></h6>
                       <div class="table-responsive">
                         <form >
         
@@ -210,7 +211,7 @@
                                 <input type="password" class="form-control" id="password" name="password" placeholder="Password">
                             </div>
 
-                            <button id="submit" class="btn btn-primary me-2">Add</button>
+                            <button type="button" onclick="loadDoc()" class="btn btn-primary me-2">Add</button>
                         </form>
                       </div>
                   </div>
@@ -258,20 +259,33 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
-$(document).ready(function(){
-  $("#submit").click(function(){
-    $.post("http://127.0.0.1:8000/api/employee/add",
-    {
-      username: $("#username").html(),
-      name: $("#name").html(),
-      email: $("#email").html(),
-      password: $("#password").html(),
-    },
-    function(data,status){
-      alert("\nStatus: " + status);
-    });
-  });
-});
+function loadDoc() {
+  var username = document.getElementById("username").value;
+  var name = document.getElementById("name").value;
+  var email = document.getElementById("email").value;
+  var password = document.getElementById("password").value;
+  if(username != "" && name != "" && email != "" && password != ""){ 
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("success_msg").innerHTML = "Successfully added!";
+    }
+  };
+    xhttp.open("POST", "http://127.0.0.1:8000/api/employee/add", true);
+    xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.send(JSON.stringify({"username":username , 
+    "name":name, 
+    "email": email, 
+    "password": password}));
+  }else{
+    console.log(document.getElementById("username").value);
+    console.log(username);
+    console.log(name);
+    console.log(email);
+    console.log(password);
+    console.log("Has Error");
+  }
+}
 </script>
 
 

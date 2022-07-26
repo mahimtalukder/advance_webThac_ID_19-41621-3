@@ -23,3 +23,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/employee/list',[AdminController::class,'APIEmployeeList']);
 Route::post('/employee/add',[AdminController::class,'APIemployeeAdd']);
+Route::get('/employee/{username}',[AdminController::class,'APIemployeeDetails']);

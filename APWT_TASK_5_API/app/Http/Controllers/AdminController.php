@@ -184,4 +184,12 @@ class AdminController extends Controller
 
     return $request;
   }
+
+
+  public function APIemployeeDetails(Request $request)
+  {
+    $employee = Employee::where('username', $request->username)->first();
+
+    return $employee;
+  }
 }

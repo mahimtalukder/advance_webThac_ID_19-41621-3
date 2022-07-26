@@ -3,6 +3,8 @@ import axios from "axios";
 import SideBar from "./side_bar";
 import TopNav from "./top_nav";
 import List from './emp_list';
+import Footer from './footer';
+
 
 
 
@@ -41,7 +43,6 @@ const EmployeeList = () => {
                                                     <th>Name</th>
                                                     <th>Email</th>
                                                     <th></th>
-                                                    <th></th>
                                                 </tr>
                                             </thead>
                                             <tbody id="tableBody">
@@ -61,9 +62,7 @@ const EmployeeList = () => {
                     </div>
 
                 </div>
-                <footer class="footer d-flex flex-column flex-md-row align-items-center justify-content-between px-4 py-3 border-top small">
-                    <p class="text-muted mb-1 mb-md-0">Copyright © 2022 <a href="#">MT</a>.</p>
-                </footer>
+                <Footer/>
 
 
             </div>
